@@ -2,10 +2,9 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,22 +14,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.AppointMentDAO;
-import com.model.Appointment;
-import com.model.Patient;
+import com.dao.DoctorDAO;
+import com.model.Doctor;
 
 /**
- * Servlet implementation class AppointmentSave
+ * Servlet implementation class DoctorProfileList
  */
-@WebServlet("/AppointmentSave")
-public class AppointmentSave extends HttpServlet {
+@WebServlet("/DoctorProfileList")
+public class DoctorProfileList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ServletContext ctx;
-	HttpSession mySession;
+       HttpSession session;
+       ServletContext ctx;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AppointmentSave() {
+    public DoctorProfileList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,45 +38,35 @@ public class AppointmentSave extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		ctx=config.getServletContext();
+		ctx = config.getServletContext();
+	}
+
+	/**
+	 * @see Servlet#destroy()
+	 */
+	public void destroy() {
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		session = request.getSession(true);
+		RequestDispatcher rdisp;
 		
-		String but = request.getParameter("submit");
-		String did=but.substring(10);
-		mySession=request.getSession(true);
-		Patient patient=(Patient)mySession.getAttribute("PATIENT");
+		Doctor d1 = new Doctor();
+		ArrayList <Doctor> al = new ArrayList<Doctor>();
+		DoctorDAO dao = new DoctorDAO();
+		
+		al = dao.getDoctor();
+		session.setAttribute("DPL", al);
+		
+		rdisp = ctx.getRequestDispatcher("/doctorProfileList.jsp");
+		rdisp.forward(request, response);
 	
-		PrintWriter pw=response.getWriter();
-		Appointment ap=new Appointment();
-		AppointMentDAO adao=new AppointMentDAO();
-		boolean flag=adao.InsertAppointMent(did, patient.getName(), patient.getEmailid());
-		
-		
-		if (flag==true)
-		{
-	
-			 pw.println("<!DOCTYPE html>\r\n" + 
-				  		"<html>\r\n" + 
-				  		"<head>\r\n" +
-				  		"                 <link rel=\"stylesheet\" type=\"text/css\" href=\"mystylesheet.css\">\r\n" + 
-				  		"        \r\n" + 
-				  		"    </head>\r\n" + 
-				  		"    <body>\r\n");
-				  		
-				  pw.println("<center><h3>Your Request for Appointment is Submitted</h3></br></br>");
-				  pw.println("</br><a href='patientHomePage.jsp'>Click Here To GO TO Patient HomePage</a></center></body></html>");
-		 }
 	}
-		
-		
-	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

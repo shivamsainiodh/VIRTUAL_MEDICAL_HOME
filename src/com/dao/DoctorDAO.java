@@ -10,43 +10,40 @@ import com.model.Doctor;
 
 public class DoctorDAO {
 
-	
-
-	ArrayList<Doctor>  doctors;
+	ArrayList <Doctor> doctors;
 	Connection con;
 	MyConnection mycon;
 	
 	public DoctorDAO()
 	{
-		doctors=new ArrayList<Doctor>();
-		mycon =new MyConnection();
-		}
+		doctors = new ArrayList <Doctor>();
+		mycon = new MyConnection();
+	}
 	
-	public ArrayList<Doctor> getDoctor()
+	public ArrayList <Doctor> getDoctor()
 	{
-		con=mycon.getMyConnection();
+		con = mycon.getMyConnection();
 		try
 		{
 			Statement stmt=con.createStatement();
 			
 			ResultSet rs=stmt.executeQuery("select * from doctor");
-		while(rs.next())
-		{
-			Doctor d1=new Doctor();
-			d1.setDoctorId(rs.getString(1));
-			d1.setPassword(rs.getString(2));
-			d1.setConfirmPassword(rs.getString(3));
-			d1.setName(rs.getString(4));
-			d1.setAddress(rs.getString(5));
-			d1.setGender(rs.getString(6));
-			d1.setPhone(rs.getString(7));
-			d1.setQualification(rs.getString(8));
-			d1.setExperience(rs.getInt(9));
-			d1.setSpecialization(rs.getString(10));
-			
+			while(rs.next())
+			{
+				Doctor d1=new Doctor();
+				d1.setDoctorId(rs.getString(1));
+				d1.setPassword(rs.getString(2));
+				d1.setConfirmPassword(rs.getString(3));
+				d1.setName(rs.getString(4));
+				d1.setAddress(rs.getString(5));
+				d1.setGender(rs.getString(6));
+				d1.setPhone(rs.getString(7));
+				d1.setQualification(rs.getString(8));
+				d1.setExperience(rs.getInt(9));
+				d1.setSpecialization(rs.getString(10));
 		
-			doctors.add(d1);
-		}
+				doctors.add(d1);
+			}
 		}
 		catch(Exception e)
 		{

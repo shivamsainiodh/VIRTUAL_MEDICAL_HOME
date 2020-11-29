@@ -27,7 +27,7 @@ Patient patient=(Patient)mySession.getAttribute("PATIENT");
                  
     </head>
     <body>
- <nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
               <div class="navbar-header">
            
@@ -40,62 +40,42 @@ Patient patient=(Patient)mySession.getAttribute("PATIENT");
                         
                     </ul>
                 </div>
-        </nav><br><br><br><br><br>
-        <center>
-      
-      
-      
-         
-       <form method="get" action="updatePatient">
-        
-       
-<table style="background-color:rgba (0, 0, 0, 0.5);" border="3" >
- <tr><th colspan="2">Patient Profile</th></tr>
-        <tr><td>  email-Id :</td>
+	</nav><br><br><br><br><br>
+    <center>
+     <form method="get" action="updatePatient">       
+	   <table style="background-color:rgba (0, 0, 0, 0.5);" border="3" >
+ 		 <tr><th colspan="2">Patient Profile</th></tr>
+         <tr><td>  email-Id :</td>
             <td><input type="text" name="id" value=<%out.println(patient.getEmailid()); %> readonly/></td>
-        </tr>
-        <tr><td> Password :</td>
+         </tr>
+         <tr><td> Password :</td>
             <td><input type="password" name="pass" id="pass1" value=<%out.println(patient.getPass()); %>required/></td>
-        </tr>
-        <tr><td>  Confirm Password :</td>
+         </tr>
+         <tr><td>  Confirm Password :</td>
             <td><input type="password" name="cnfPass" id="pass2"  value=<%out.println(patient.getCnfpass()); %> required/></td>
-        </tr>
+         </tr>
          <tr><td>  Name:</td>
             <td><input type="text" name="name" value=<%out.println(patient.getName()); %> required/></td>
-        </tr>
-        <tr><td> Address :</td>
+         </tr>
+         <tr><td> Address :</td>
             <td><input type="text" name="add"  value=<%out.println(patient.getAddress()); %>  required/></td>
-        </tr>
-        <tr><td> Gender :</td>
+         </tr>
+         <tr><td> Gender :</td>
             <td><input type="text" name="gen" value=<%out.println(patient.getGender()); %>   required/></td>
-        </tr>
-        <tr><td> Phone :</td>
+         </tr>
+         <tr><td> Phone :</td>
             <td><input type="text" name="phone" value=<%out.println(patient.getPhone()); %>required/></td>
-        </tr>
+         </tr>
          <tr><td> Date of Birth:</td>
             <td><input type="text" value=<%out.println(patient.getDob()); %> name="date" ></td>
-        </tr>
+         </tr>
          <tr><td> Occupation :</td>
-            <td><input type="text" name="occ"  value=<%out.println(patient.getOccupation()); %> required/></td>
-        
-       
-       
-      
-
-  <tr><td colspan="2"><input type="submit" name="s1" id="btn" value="Submit"/></td></tr>
-  
+         	<td><input type="text" name="occ"  value=<%out.println(patient.getOccupation()); %> required/></td>
+         </tr>
+		 <tr><td colspan="2"><input type="submit" name="s1" id="btn" value="Submit"/></td></tr>
      </table></center><hr>
-     
-     </form>              
-      
-      
-      
-      
-      
-      
-      
-        </center>
-        
+    </form>              
+   </center>   
 </body>
 
 </html>

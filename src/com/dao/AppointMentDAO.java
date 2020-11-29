@@ -18,28 +18,26 @@ public class AppointMentDAO {
 	
 	public AppointMentDAO()
 	{
-		app=new ArrayList<Appointment>();
-		mycon =new MyConnection();
-		}
+		app = new ArrayList<Appointment>();
+		mycon = new MyConnection();
+	}
 	
 	public ArrayList<Appointment> getAppointment()
 	{
-		con=mycon.getMyConnection();
+		con = mycon.getMyConnection();
 		try
 		{
-			Statement stmt=con.createStatement();
-			
-			ResultSet rs=stmt.executeQuery("select * from appointment");
-		while(rs.next())
-		{
-			Appointment a=new Appointment();
-			a.setDoctorId(rs.getString(1));
-			a.setPatientName(rs.getString(2));
-			a.setPatientId(rs.getString(3));
-			
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from appointment");
+			while(rs.next())
+			{
+				Appointment a = new Appointment();
+				a.setDoctorId(rs.getString(1));
+				a.setPatientName(rs.getString(2));
+				a.setPatientId(rs.getString(3));
 		
-			app.add(a);
-		}
+				app.add(a);
+			}
 		}
 		catch(Exception e)
 		{
@@ -55,16 +53,17 @@ public class AppointMentDAO {
 	{
 		boolean flag=false;
 	
-		con=mycon.getMyConnection();
+		con = mycon.getMyConnection();
 		try
 		{
 			 PreparedStatement pstmt=con.prepareStatement("insert into appointment values(?,?,?)");
 				
-				pstmt.setString(1,did);
-				pstmt.setString(2,pname);
-				pstmt.setString(3,pid);
-				pstmt.execute();
-			  flag=true;
+			pstmt.setString(1,did);
+			pstmt.setString(2,pname);
+			pstmt.setString(3,pid);
+			pstmt.execute();
+			  
+			flag=true;
 		}
 		catch(Exception ex)
 		{

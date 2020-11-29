@@ -39,15 +39,15 @@
 <center>
 <table style="background-color:rgba (0, 0, 0, 0.5);" border="3" >
   <tr><th colspan="2">LOGIN</th></tr>
-        <tr><td>  Id :</td>
+        <tr><td> Id </td>
             <td><input type="text" name="id" required/></td>
         </tr>
-        <tr><td>  Password :</td>
+        <tr><td> Password </td>
             <td><input type="password" name="pass" required/></td>
         </tr>
-        <tr><td>ROLE:-<td>ADMIN:<input type="radio" name="rad" value="admin" />
-                          PATIENT:<input type="radio" name="rad" value="patient" />
-                          DOCTOR:<input type="radio" name="rad" value="doctor" /></td>
+        <tr><td> Role <td> ADMIN <input type="radio" name="rad" value="admin" />
+                           PATIENT <input type="radio" name="rad" value="patient" />
+                           DOCTOR <input type="radio" name="rad" value="doctor" /></td>
       
 
   <tr><td colspan="2"><input type="submit" name="s1" id="btn" value="Submit"/></td></tr>

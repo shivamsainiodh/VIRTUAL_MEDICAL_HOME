@@ -45,28 +45,23 @@ public class PatientSignupServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		String emailid = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		String cnfPass = request.getParameter("cnfPass");
+		String name = request.getParameter("name");
+		String address = request.getParameter("add");
+		String gender = request.getParameter("gen");
+		String phone = request.getParameter("phone");
+		String dob = request.getParameter("date");
+		String occ = request.getParameter("occ");
+		PrintWriter pw = response.getWriter();
 		
-		
-		
-		String emailid=request.getParameter("id");
-		String pass=request.getParameter("pass");
-		String cnfPass=request.getParameter("cnfPass");
-		String name=request.getParameter("name");
-		String address=request.getParameter("add");
-		String gender=request.getParameter("gen");
-		String phone=request.getParameter("phone");
-		String dob=request.getParameter("date");
-		String occ=request.getParameter("occ");
-		PrintWriter pw=response.getWriter();
-		 Patient pp=new Patient(emailid,pass,cnfPass,name,address,gender,phone,dob,occ);
+		Patient pp = new Patient(emailid,pass,cnfPass,name,address,gender,phone,dob,occ);
 		RequestDispatcher rdis;
 		if(pass.equals(cnfPass))
-		{
-			
-		
-		 PatientDAO pdao=new PatientDAO();
-		 
-		  boolean flag=pdao.InsertPatient(pp);
+	    {
+		  PatientDAO pdao = new PatientDAO();
+		  boolean flag = pdao.InsertPatient(pp);
 		
 		  if(flag==true)
 		  {
@@ -87,7 +82,7 @@ public class PatientSignupServlet extends HttpServlet {
 			  		
 		  }
 		
-		  }
+		}
 		else
 		{
 		   pw.println("<center>Hey! Password and Confirm Password Should be Same</center>");

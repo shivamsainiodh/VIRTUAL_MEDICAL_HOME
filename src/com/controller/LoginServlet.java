@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		ctx=config.getServletContext();
+		ctx = config.getServletContext();
 	}
 
 	
@@ -60,85 +60,83 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		mySession=request.getSession(true);
-		String op=request.getParameter("rad");
-		String emailid=request.getParameter("id");
-		String pass=request.getParameter("pass");
-		PrintWriter pw=response.getWriter();
+		mySession = request.getSession(true);
+		String op = request.getParameter("rad");
+		String emailid = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		PrintWriter pw = response.getWriter();
+		
 		RequestDispatcher rdis;
 		if(op.equals("admin"))
 		{
 			Admin d1=new Admin();
-		ArrayList<Admin> al=new ArrayList<Admin>();
-		AdminDAO adao=new AdminDAO();
-	  al=adao.getAdmin();
-	  int f=1;
-	  for(Admin d:al)
-	  {
-		  if(d.getEmailId().equals(emailid) && d.getPassword().equals(pass))
-		  {     f=0;
-			    mySession.setAttribute("ADMIN",d);
-			    rdis=ctx.getRequestDispatcher("/adminHomePage.jsp");
-				rdis.forward(request,response);
-		  }
+			ArrayList <Admin> al = new ArrayList <Admin>();
+			AdminDAO adao = new AdminDAO();
+			al = adao.getAdmin();
+			int f=1;
+			for(Admin d:al)
+			{
+				if(d.getEmailId().equals(emailid) && d.getPassword().equals(pass))
+				{
+					f=0;
+					mySession.setAttribute("ADMIN",d);
+					rdis = ctx.getRequestDispatcher("/adminHomePage.jsp");
+					rdis.forward(request,response);
+				}
 		 
-	  }
-	  if(f==1)
-	  {
-		  
+			}
+			if(f==1)
+			{	
+				
 				pw.println("Admin details are Incorrect");
 	
-	  }
 			}
+		}
 		
 		else if(op.equals("patient"))
 		{ 
-			Patient d1=new Patient();
-		ArrayList<Patient> al=new ArrayList<Patient>();
-		PatientDAO pdao=new PatientDAO();
-	  al=pdao.getPatient();
-	  int f=1;
-	  for(Patient d:al)
-	  {
-		  if(d.getEmailid().equals(emailid) && d.getPass().equals(pass))
-		  {     f=0;
-			    mySession.setAttribute("PATIENT",d);
-			    rdis=ctx.getRequestDispatcher("/patientHomePage.jsp");
-				rdis.forward(request,response);
-		  }
-		 
-	  }
-	  if(f==1)
-	  {
-		  
-				pw.println("Patient details are Incorrect");
-	
-	  }
+			Patient d1 = new Patient();
+			ArrayList<Patient> al = new ArrayList<Patient>();
+			PatientDAO pdao = new PatientDAO();
+			al = pdao.getPatient();
+			int f=1;
+			for(Patient d:al)
+			{
+				if(d.getEmailid().equals(emailid) && d.getPass().equals(pass))
+				{
+					f=0;
+					mySession.setAttribute("PATIENT",d);
+					rdis = ctx.getRequestDispatcher("/patientHomePage.jsp");
+					rdis.forward(request,response);
+				}
 			}
+			if(f==1)
+			{
+				pw.println("Patient details are Incorrect");	
+			}	
+		}
 		else if(op.equals("doctor"))
 		{
-				  Doctor d1=new Doctor();
-					ArrayList<Doctor> al=new ArrayList<Doctor>();
-					DoctorDAO docdao=new DoctorDAO();
-				  al=docdao.getDoctor();
-				  int f=1;
-				  for(Doctor d:al)
-				  {
-					  if(d.getDoctorId().equals(emailid) && d.getPassword().equals(pass))
-					  {     f=0;
-						    mySession.setAttribute("DOCTOR",d);
-						    rdis=ctx.getRequestDispatcher("/DoctorHomePage.jsp");
-							rdis.forward(request,response);
-					  }
-					 
-				  }
-				  if(f==1)
-				  {
-					  
-							pw.println("Doctor details are Incorrect");
-				
-				  }
-			    }
+			Doctor d1 = new Doctor();
+			ArrayList<Doctor> al = new ArrayList<Doctor>();
+			DoctorDAO docdao = new DoctorDAO();
+			al = docdao.getDoctor();
+			int f=1;
+			for(Doctor d:al)
+			{
+				if(d.getDoctorId().equals(emailid) && d.getPassword().equals(pass))
+				{    
+					f=0;
+					mySession.setAttribute("DOCTOR",d);
+				    rdis = ctx.getRequestDispatcher("/DoctorHomePage.jsp");
+					rdis.forward(request,response);
+				}		 
+			}
+			if(f==1)
+			{		  
+					pw.println("Doctor details are Incorrect");
+			}
+	   }
 		
 				
 	}

@@ -67,9 +67,6 @@ public class DoctorServlet extends HttpServlet {
 		if(pass.equals(cnfPass))
 		{
 			
-			
-			
-			
 		  boolean flag=ddo.InsertDoctor(dd);
 		  if(flag==true)
 		  {
@@ -90,19 +87,11 @@ public class DoctorServlet extends HttpServlet {
 			  		
 		  }
 		
-		  }
+		}
 		else
 		{
 		   pw.println("<center>Hey! Password and Confirm Password Should be Same</center>");
 		}
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 

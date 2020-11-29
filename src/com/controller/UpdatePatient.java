@@ -41,15 +41,7 @@ public class UpdatePatient extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
-		
-		
-		
-		
-		
 
-		
 		String emailid=request.getParameter("id");
 		String pass=request.getParameter("pass");
 		String cnfPass=request.getParameter("cnfPass");
@@ -60,7 +52,7 @@ public class UpdatePatient extends HttpServlet {
 		String dob=request.getParameter("date");
 		String occ=request.getParameter("occ");
 		PrintWriter pw=response.getWriter();
-		 Patient pp=new Patient(emailid,pass,cnfPass,name,address,gender,phone,dob,occ);
+		Patient pp=new Patient(emailid,pass,cnfPass,name,address,gender,phone,dob,occ);
 		RequestDispatcher rdis;
 		if(pass.equals(cnfPass))
 		{
@@ -83,12 +75,12 @@ public class UpdatePatient extends HttpServlet {
 			  		"    </head>\r\n" + 
 			  		"    <body>\r\n");
 			  		
-			  pw.println("<center><h3>Updation in  Successful</h3></br></br>");
+			  pw.println("<center><h3>Record Updated Successfully ..!!</h3></br></br>");
 			  pw.println("</br><a href='patientHomePage.jsp'>Click Here To go to HomePage</a></center></body></html>");
 			  		
 		  }
 		
-		  }
+		}
 		else
 		{
 		   pw.println("<center>Hey! Password and Confirm Password Should be Same</center>");

@@ -7,7 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<%   HttpSession mySession;
+<%   
+HttpSession mySession;
 mySession=request.getSession(true);
 Doctor d=(Doctor)mySession.getAttribute("DOCTOR");
 %>

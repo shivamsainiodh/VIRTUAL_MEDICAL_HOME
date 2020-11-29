@@ -52,21 +52,19 @@ public class DoctorList extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		mySession=request.getSession(true);
-		PrintWriter pw=response.getWriter();
+		mySession = request.getSession(true);
+		PrintWriter pw = response.getWriter();
 		RequestDispatcher rdis;
-		 Doctor d1=new Doctor();
-			ArrayList<Doctor> al=new ArrayList<Doctor>();
-			DoctorDAO docdao=new DoctorDAO();
-		  al=docdao.getDoctor();
-		  mySession.setAttribute("AL",al);
-							rdis=ctx.getRequestDispatcher("/patientDoctorList.jsp");
-							rdis.forward(request,response);
-			
-			
 		
+		Doctor d1 = new Doctor();
+		ArrayList <Doctor> al = new ArrayList <Doctor>();
+		DoctorDAO docdao = new DoctorDAO();
+		al = docdao.getDoctor();
 		
+		mySession.setAttribute("AL",al);
 		
+		rdis=ctx.getRequestDispatcher("/patientDoctorList.jsp");
+		rdis.forward(request,response);
 		
 	}
 

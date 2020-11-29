@@ -15,9 +15,9 @@ public class PatientDAO {
 	
 	public PatientDAO()
 	{
-		patients=new ArrayList<Patient>();
-		mycon =new MyConnection();
-		}
+		patients = new ArrayList<Patient>();
+		mycon = new MyConnection();
+	}
 	
 	public ArrayList<Patient> getPatient()
 	{
@@ -25,25 +25,22 @@ public class PatientDAO {
 		try
 		{
 			Statement stmt=con.createStatement();
-			
 			ResultSet rs=stmt.executeQuery("select * from patient");
-		while(rs.next())
-		{
-			Patient d1=new Patient();
-			d1.setEmailid(rs.getString(1));
-			d1.setPass(rs.getString(2));
-			d1.setCnfpass(rs.getString(3));
-			d1.setName(rs.getString(4));
-			d1.setAddress(rs.getString(5));
-			d1.setGender(rs.getString(6));
-			d1.setPhone(rs.getString(7));
-			d1.setDob(rs.getString(8));
-			d1.setOccupation(rs.getString(9));
-			
-			
+			while(rs.next())
+			{
+				Patient d1=new Patient();
+				d1.setEmailid(rs.getString(1));
+				d1.setPass(rs.getString(2));
+				d1.setCnfpass(rs.getString(3));
+				d1.setName(rs.getString(4));
+				d1.setAddress(rs.getString(5));
+				d1.setGender(rs.getString(6));
+				d1.setPhone(rs.getString(7));
+				d1.setDob(rs.getString(8));
+				d1.setOccupation(rs.getString(9));
 		
-			patients.add(d1);
-		}
+				patients.add(d1);
+			}
 		}
 		catch(Exception e)
 		{
@@ -64,7 +61,7 @@ public class PatientDAO {
 		con=mycon.getMyConnection();
 		try
 		{
-			 PreparedStatement pstmt=con.prepareStatement("insert into patient values(?,?,?,?,?,?,?,?,?)");
+			 PreparedStatement pstmt = con.prepareStatement("insert into patient values(?,?,?,?,?,?,?,?,?)");
 				
 				pstmt.setString(1,e.getEmailid());
 				pstmt.setString(2,e.getPass());
@@ -103,8 +100,6 @@ public class PatientDAO {
 		{
 			PreparedStatement pstmt=con.prepareStatement("update patient set pass=?,cnfpass=?,name=?,address=? ,gender=?,phone=?,dob=?,occupation=?  where emailid=?");
 			
-			
-			
 			pstmt.setString(1,p.getPass());
 			pstmt.setString(2,p.getCnfpass());
 			pstmt.setString(3,p.getName());
@@ -116,8 +111,7 @@ public class PatientDAO {
 			pstmt.setString(9,p.getEmailid());
 			pstmt.execute();
 			flag=true;
-			
-			
+		
 		}
 		catch(Exception ex)
 		{
@@ -127,13 +121,6 @@ public class PatientDAO {
 		}
 	return flag;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 }
 	

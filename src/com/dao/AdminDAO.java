@@ -9,18 +9,15 @@ import com.model.Admin;
 
 public class AdminDAO {
 
-	
-
-
-	ArrayList<Admin>  admin;
+	ArrayList <Admin>  admin;
 	Connection con;
 	MyConnection mycon;
 	
 	public AdminDAO()
 	{
-		admin=new ArrayList<Admin>();
-		mycon =new MyConnection();
-		}
+		admin = new ArrayList <Admin>();
+		mycon = new MyConnection();
+	}
 	
 	public ArrayList<Admin> getAdmin()
 	{
@@ -28,17 +25,16 @@ public class AdminDAO {
 		try
 		{
 			Statement stmt=con.createStatement();
-			
 			ResultSet rs=stmt.executeQuery("select * from admin");
-		while(rs.next())
-		{
-			Admin d1=new Admin();
-			d1.setEmailId(rs.getString(1));
-		    d1.setPassword(rs.getString(2));
-		    d1.setName(rs.getString(3));
+			while(rs.next())
+			{
+				Admin d1=new Admin();
+				d1.setEmailId(rs.getString(1));
+				d1.setPassword(rs.getString(2));
+				d1.setName(rs.getString(3));
 		
-		    admin.add(d1);
-		}
+				admin.add(d1);
+			}
 		}
 		catch(Exception e)
 		{

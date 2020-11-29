@@ -36,9 +36,7 @@
  <center>
     <a href="doctorsignup.jsp"><input type="submit" name="s2" id="btn" value="For Doctor Registraion Click Here"/></a></br></br>
     <a href="patientsignup.jsp"><input type="submit" name="s2" id="btn" value="For Patient Registraion Click Here"/></a>
-     
-    
-     </center>
+ </center>
      
      
      
